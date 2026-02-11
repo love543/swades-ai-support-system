@@ -12,6 +12,8 @@ function App() {
     const [messages, setMessages] = useState<MessageResponse[]>([]);
     const [isLoading, setIsLoading] = useState(false);
     const [streamingContent, setStreamingContent] = useState('');
+    const [streamingAgentType, setStreamingAgentType] = useState<import('@swades/shared-types').AgentType | undefined>();
+    const [streamingReasoning, setStreamingReasoning] = useState<string | undefined>();
 
     // Load conversations on mount
     useEffect(() => {
@@ -52,6 +54,8 @@ function App() {
         let newConversationId = activeConversationId;
         let tempUserMessage: MessageResponse | null = null;
         let accumulatedContent = ''; // LOCAL variable to track actual content
+        let capturedAgentType: import('@swades/shared-types').AgentType | undefined;
+        let capturedReasoning: string | undefined;
 
         try {
             await apiClient.streamMessage({
@@ -59,6 +63,12 @@ function App() {
                 message,
                 onMetadata: (data) => {
                     newConversationId = data.conversationId;
+
+                    // Capture agent info from metadata (local vars + state for streaming display)
+                    capturedAgentType = data.agentType;
+                    capturedReasoning = data.reasoning;
+                    setStreamingAgentType(data.agentType);
+                    setStreamingReasoning(data.reasoning);
 
                     // Add user message
                     tempUserMessage = {
@@ -80,19 +90,21 @@ function App() {
                     setStreamingContent(accumulatedContent); // Update state for display
                 },
                 onDone: (data) => {
-                    // Add assistant message using accumulated content
+                    // Add assistant message using accumulated content & local agent info
                     const assistantMessage: MessageResponse = {
                         id: data.messageId,
                         conversationId: newConversationId!,
                         role: 'assistant',
-                        content: accumulatedContent, // Use LOCAL variable, not state!
-                        agentType: data.agentType,
-                        reasoning: data.reasoning,
+                        content: accumulatedContent,
+                        agentType: capturedAgentType,
+                        reasoning: capturedReasoning,
                         createdAt: new Date(),
                     };
 
                     setMessages((prev) => [...prev, assistantMessage]);
                     setStreamingContent('');
+                    setStreamingAgentType(undefined);
+                    setStreamingReasoning(undefined);
                     setIsLoading(false);
                     loadConversations(); // Refresh list with updated timestamp
                 },
@@ -100,6 +112,8 @@ function App() {
                     console.error('Stream error:', error);
                     setIsLoading(false);
                     setStreamingContent('');
+                    setStreamingAgentType(undefined);
+                    setStreamingReasoning(undefined);
                 },
             });
         } catch (error) {
@@ -139,6 +153,8 @@ function App() {
                 conversationId: activeConversationId!,
                 role: 'assistant' as const,
                 content: streamingContent,
+                agentType: streamingAgentType,
+                reasoning: streamingReasoning,
                 createdAt: new Date(),
             },
         ]

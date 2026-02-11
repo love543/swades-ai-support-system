@@ -45,7 +45,6 @@ Classify this query and explain your reasoning.`;
         return toolCall.args as RouterResult;
     }
 
-    // Fallback to support agent
     return {
         agentType: 'support',
         reasoning: 'Unable to classify query specifically, defaulting to support agent',

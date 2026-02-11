@@ -49,7 +49,6 @@ export class ChatService {
     }
 
     async sendMessage(conversationId: string, userMessage: string) {
-        // Get conversation context (last 10 messages)
         const contextMessages = await db
             .select()
             .from(messages)
@@ -57,9 +56,8 @@ export class ChatService {
             .orderBy(desc(messages.createdAt))
             .limit(10);
 
-        contextMessages.reverse(); // Chronological order
+        contextMessages.reverse(); 
 
-        // Save user message
         const [userMsg] = await db
             .insert(messages)
             .values({
@@ -69,10 +67,8 @@ export class ChatService {
             })
             .returning();
 
-        // Route to appropriate agent
         const { agentType, reasoning } = await routeQuery(userMessage);
 
-        // Get agent response based on routing
         let agentStream;
         switch (agentType) {
             case 'support':
