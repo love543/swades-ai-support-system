@@ -69,14 +69,6 @@ Watch the router classify your query and delegate to the right agent! Each agent
 - Collapsible AI reasoning display
 - Smooth Framer Motion animations
 
-## 🏆 Bonus Features
-
-✅ Monorepo with Turborepo (+30 pts)  
-✅ Rate limiting (60 req/min)  
-✅ Streaming AI responses  
-✅ Context management  
-✅ AI reasoning display  
-✅ Premium animations  
 
 ---
 
