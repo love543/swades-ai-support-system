@@ -1,0 +1,26 @@
+{
+    "name": "@swades/backend",
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "tsx watch src/index.ts",
+        "build": "tsc",
+        "start": "node dist/index.js"
+    },
+    "dependencies": {
+        "@ai-sdk/groq": "^1.0.8",
+        "@hono/node-server": "^1.13.7",
+        "@hono/zod-validator": "^0.7.6",
+        "@swades/database": "*",
+        "@swades/shared-types": "*",
+        "ai": "^4.1.8",
+        "dotenv": "^17.2.4",
+        "hono": "^4.6.14",
+        "zod": "^3.24.1"
+    },
+    "devDependencies": {
+        "@types/node": "^22.10.5",
+        "tsx": "^4.19.2",
+        "typescript": "^5.7.2"
+    }
+}

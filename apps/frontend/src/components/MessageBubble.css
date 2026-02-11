@@ -1,0 +1,127 @@
+/* ═══════════════════════════════════════════════════════════
+   MessageBubble — Cyberpunk
+   Classes verified from MessageBubble.tsx:
+     .message-bubble, .message-user, .message-assistant,
+     .message-agent-badge, .agent-icon, .agent-name,
+     .message-content, .user-content, .assistant-content,
+     .message-reasoning-container, .reasoning-toggle,
+     .reasoning-content, .message-timestamp
+   ═══════════════════════════════════════════════════════════ */
+
+.message-bubble {
+    display: flex;
+    flex-direction: column;
+    max-width: 80%;
+    gap: var(--spacing-sm);
+}
+
+/* User: right-aligned */
+.message-bubble.message-user {
+    align-self: flex-end;
+    align-items: flex-end;
+}
+
+/* Assistant: left-aligned */
+.message-bubble.message-assistant {
+    align-self: flex-start;
+    align-items: flex-start;
+}
+
+/* ── Agent Badge ──────────────────────────────────── */
+
+.message-agent-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    font-size: 0.6875rem;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: rgba(0, 255, 136, 0.06);
+    border: 1px solid;
+}
+
+.agent-icon {
+    font-size: 0.75rem;
+}
+
+.agent-name {
+    color: inherit;
+}
+
+/* ── Message Content ──────────────────────────────── */
+
+.message-content {
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    font-size: 0.9375rem;
+    line-height: 1.7;
+}
+
+/* User bubble: solid dark with green left border */
+.message-content.user-content {
+    background: var(--black-card);
+    border: 1px solid var(--gray-border);
+    color: var(--text-primary);
+    border-left: 2px solid var(--neon-green);
+}
+
+/* AI bubble: slightly lighter dark */
+.message-content.assistant-content {
+    background: var(--black-surface);
+    border: 1px solid var(--gray-border);
+    color: var(--text-primary);
+    border-left: 2px solid var(--neon-cyan);
+}
+
+/* ── Reasoning ────────────────────────────────────── */
+
+.message-reasoning-container {
+    width: 100%;
+}
+
+.reasoning-toggle {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: 6px 12px;
+    background: rgba(0, 255, 136, 0.05);
+    border: 1px solid rgba(0, 255, 136, 0.15);
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    color: var(--neon-green);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.reasoning-toggle:hover {
+    background: rgba(0, 255, 136, 0.1);
+    border-color: rgba(0, 255, 136, 0.3);
+}
+
+.reasoning-content {
+    margin-top: var(--spacing-sm);
+    padding: var(--spacing-md);
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--gray-border);
+    border-left: 2px solid var(--neon-green);
+    border-radius: var(--radius-sm);
+    font-size: 0.8125rem;
+    font-family: var(--font-mono);
+    line-height: 1.6;
+    color: var(--text-secondary);
+    overflow: hidden;
+}
+
+/* ── Timestamp ────────────────────────────────────── */
+
+.message-timestamp {
+    font-size: 0.6875rem;
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+}

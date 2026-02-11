@@ -1,0 +1,21 @@
+{
+    "name": "@swades/database",
+    "version": "1.0.0",
+    "type": "module",
+    "main": "./src/index.ts",
+    "types": "./src/index.ts",
+    "scripts": {
+        "generate": "drizzle-kit generate",
+        "push": "drizzle-kit push",
+        "seed": "tsx src/seed.ts"
+    },
+    "dependencies": {
+        "drizzle-orm": "^0.36.4",
+        "postgres": "^3.4.4"
+    },
+    "devDependencies": {
+        "drizzle-kit": "^0.28.1",
+        "tsx": "^4.19.2",
+        "typescript": "^5.7.2"
+    }
+}

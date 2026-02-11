@@ -1,0 +1,24 @@
+{
+  "name": "swades-ai-support",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "db:generate": "cd packages/database && npm run generate",
+    "db:push": "cd packages/database && npm run push",
+    "db:seed": "cd packages/database && npm run seed"
+  },
+  "devDependencies": {
+    "turbo": "^1.13.4"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

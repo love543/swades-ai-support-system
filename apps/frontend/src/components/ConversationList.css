@@ -1,0 +1,174 @@
+/* ═══════════════════════════════════════════════════════════
+   ConversationList — Cyberpunk
+   Classes verified from ConversationList.tsx:
+     .conversation-list, .conversation-list-header,
+     .new-conversation-btn, .conversations-scroll,
+     .empty-conversations, .conversation-item, .active,
+     .conversation-content, .delete-btn
+   ═══════════════════════════════════════════════════════════ */
+
+.conversation-list {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: var(--spacing-lg);
+}
+
+/* ── Header ───────────────────────────────────────── */
+
+.conversation-list-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    padding-bottom: var(--spacing-lg);
+    border-bottom: 1px solid var(--gray-border);
+}
+
+.conversation-list-header h3 {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--neon-green);
+    font-family: var(--font-mono);
+}
+
+/* ── New Chat Button ──────────────────────────────── */
+
+.new-conversation-btn {
+    width: 100%;
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.15), rgba(0, 212, 255, 0.08));
+    color: var(--neon-green);
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    border-radius: var(--radius-lg);
+    font-size: 0.875rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    transition: all var(--transition-base);
+}
+
+.new-conversation-btn:hover {
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.25), rgba(0, 212, 255, 0.15));
+    border-color: var(--neon-green);
+    box-shadow: var(--glow-green);
+    transform: translateY(-1px);
+}
+
+.new-conversation-btn svg {
+    color: var(--neon-green);
+}
+
+/* ── Conversation Scroll ──────────────────────────── */
+
+.conversations-scroll {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+/* ── Conversation Item ────────────────────────────── */
+
+.conversation-item {
+    padding: var(--spacing-md);
+    background: var(--black-card);
+    border: 1px solid var(--gray-border);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-md);
+}
+
+.conversation-item:hover {
+    background: var(--black-surface);
+    border-color: var(--gray-mid);
+}
+
+.conversation-item.active {
+    background: rgba(0, 255, 136, 0.06);
+    border-color: rgba(0, 255, 136, 0.4);
+    box-shadow: var(--glow-green);
+}
+
+/* ── Content inside item ──────────────────────────── */
+
+.conversation-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.conversation-content h4 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 4px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.conversation-item.active .conversation-content h4 {
+    color: var(--neon-green);
+}
+
+.conversation-content p {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin: 0;
+    font-family: var(--font-mono);
+}
+
+/* ── Delete Button ────────────────────────────────── */
+
+.delete-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    opacity: 0;
+    transition: all var(--transition-fast);
+}
+
+.conversation-item:hover .delete-btn {
+    opacity: 1;
+}
+
+.delete-btn:hover {
+    background: rgba(255, 0, 0, 0.1);
+    color: #ff4444;
+}
+
+/* ── Empty State ──────────────────────────────────── */
+
+.empty-conversations {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-xl);
+    text-align: center;
+    gap: var(--spacing-sm);
+}
+
+.empty-conversations p {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.empty-conversations span {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}

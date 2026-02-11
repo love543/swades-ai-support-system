@@ -1,0 +1,68 @@
+/* ═══════════════════════════════════════════════════════════
+   App Layout — Cyberpunk
+   Classes: .app, .app-container, .sidebar, .main-content
+   ═══════════════════════════════════════════════════════════ */
+
+.app {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.app-container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    z-index: 1;
+}
+
+/* ── Sidebar ──────────────────────────────────────── */
+
+.sidebar {
+    background: var(--black-deep);
+    border: 1px solid var(--gray-border);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-lg);
+    overflow: hidden;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+/* ── Main Panel ───────────────────────────────────── */
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    background: var(--black-deep);
+    border: 1px solid var(--gray-border);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    position: relative;
+}
+
+/* neon accent line on top */
+.main-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, var(--neon-green) 50%, transparent 100%);
+    opacity: 0.6;
+    z-index: 2;
+}
+
+@media (max-width: 768px) {
+    .app-container {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        display: none;
+    }
+}

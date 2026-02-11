@@ -1,0 +1,279 @@
+/* ═══════════════════════════════════════════════════════════
+   ChatInterface — Cyberpunk
+   Classes verified from ChatInterface.tsx:
+     .chat-interface, .chat-header, .header-content,
+     .header-title, .header-subtitle, .status-indicator,
+     .status-dot, .messages-container, .empty-state,
+     .empty-icon, .agent-tags, .agent-tag.support/order/billing,
+     .messages-list, .chat-input-container, .chat-input-form,
+     .input-wrapper, .chat-input, .send-button
+   ═══════════════════════════════════════════════════════════ */
+
+.chat-interface {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* ── Header ───────────────────────────────────────── */
+
+.chat-header {
+    padding: var(--spacing-lg) var(--spacing-xl);
+    border-bottom: 1px solid var(--gray-border);
+    flex-shrink: 0;
+    position: relative;
+}
+
+/* neon line under header */
+.chat-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.3), transparent);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-title {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+/* logo placeholder — put your image in the h2 or add an <img> before h2 */
+.header-title h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0;
+    /* text-gradient class on the h2 handles the green→cyan gradient */
+}
+
+.header-subtitle {
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+}
+
+/* ── Status ───────────────────────────────────────── */
+
+.status-indicator {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: 6px 14px;
+    border: 1px solid rgba(0, 255, 136, 0.2);
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    color: var(--neon-green);
+    background: rgba(0, 255, 136, 0.05);
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--neon-green);
+    box-shadow: 0 0 8px var(--neon-green);
+    animation: statusBlink 2s ease-in-out infinite;
+}
+
+@keyframes statusBlink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+}
+
+/* ── Messages ─────────────────────────────────────── */
+
+.messages-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--spacing-xl);
+}
+
+.messages-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+/* ── Empty State ──────────────────────────────────── */
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    gap: var(--spacing-md);
+}
+
+.empty-icon {
+    font-size: 3.5rem;
+    opacity: 0.6;
+}
+
+.empty-state h3 {
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.empty-state p {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    max-width: 400px;
+    margin: 0;
+}
+
+.agent-tags {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.agent-tag {
+    padding: 10px 20px;
+    border-radius: var(--radius-full);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    font-family: var(--font-mono);
+    border: 1px solid;
+    background: transparent;
+    transition: all var(--transition-fast);
+    cursor: pointer;
+}
+
+.agent-tag.support {
+    background: rgba(0, 255, 136, 0.08);
+    border-color: rgba(0, 255, 136, 0.3);
+    color: var(--neon-green);
+}
+
+.agent-tag.order {
+    background: rgba(0, 212, 255, 0.08);
+    border-color: rgba(0, 212, 255, 0.3);
+    color: var(--neon-cyan);
+}
+
+.agent-tag.billing {
+    background: rgba(255, 0, 255, 0.08);
+    border-color: rgba(255, 0, 255, 0.3);
+    color: var(--neon-magenta);
+}
+
+.agent-tag:hover {
+    transform: translateY(-2px);
+}
+
+.agent-tag.support:hover {
+    box-shadow: var(--glow-green);
+    background: rgba(0, 255, 136, 0.15);
+}
+
+.agent-tag.order:hover {
+    box-shadow: var(--glow-cyan);
+    background: rgba(0, 212, 255, 0.15);
+}
+
+.agent-tag.billing:hover {
+    box-shadow: var(--glow-magenta);
+    background: rgba(255, 0, 255, 0.15);
+}
+
+/* ── Input Container ──────────────────────────────── */
+
+.chat-input-container {
+    padding: var(--spacing-lg) var(--spacing-xl);
+    border-top: 1px solid var(--gray-border);
+    flex-shrink: 0;
+    position: relative;
+}
+
+.chat-input-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.3), transparent);
+}
+
+.chat-input-form {
+    width: 100%;
+}
+
+.input-wrapper {
+    display: flex;
+    gap: var(--spacing-md);
+    align-items: center;
+    background: var(--black-card);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-sm);
+    border: 1px solid var(--gray-border);
+    transition: all var(--transition-base);
+}
+
+.input-wrapper:focus-within {
+    border-color: var(--neon-green);
+    box-shadow: 0 0 0 2px rgba(0, 255, 136, 0.1), var(--glow-green);
+}
+
+.chat-input {
+    flex: 1;
+    background: transparent;
+    color: var(--text-primary);
+    font-size: 0.9375rem;
+    padding: var(--spacing-sm) var(--spacing-md);
+}
+
+.chat-input::placeholder {
+    color: var(--text-muted);
+}
+
+/* ── Send Button ──────────────────────────────────── */
+
+.send-button {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, var(--neon-green), var(--neon-cyan));
+    color: var(--black-pure);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: var(--glow-green);
+    transition: all var(--transition-base);
+}
+
+.send-button:hover:not(:disabled) {
+    box-shadow: var(--glow-green-strong);
+    transform: translateY(-1px);
+}
+
+.send-button:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    box-shadow: none;
+}

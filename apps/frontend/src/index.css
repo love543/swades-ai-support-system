@@ -1,0 +1,168 @@
+/* ═══════════════════════════════════════════════════════════
+   CYBERPUNK BLACK & NEON GREEN — Global Design System
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  /* Blacks */
+  --black-pure: #000000;
+  --black-deep: #0a0a0a;
+  --black-card: #111111;
+  --black-surface: #1a1a1a;
+  --gray-dark: #222222;
+  --gray-mid: #333333;
+  --gray-border: #2a2a2a;
+
+  /* Neon accents */
+  --neon-green: #00ff88;
+  --neon-cyan: #00d4ff;
+  --neon-magenta: #ff00ff;
+
+  /* Dimmed variants for backgrounds */
+  --neon-green-dim: rgba(0, 255, 136, 0.08);
+  --neon-cyan-dim: rgba(0, 212, 255, 0.08);
+  --neon-magenta-dim: rgba(255, 0, 255, 0.08);
+
+  /* Text */
+  --text-primary: #ffffff;
+  --text-secondary: #aaaaaa;
+  --text-muted: #666666;
+
+  /* Glows */
+  --glow-green: 0 0 20px rgba(0, 255, 136, 0.35);
+  --glow-cyan: 0 0 20px rgba(0, 212, 255, 0.35);
+  --glow-magenta: 0 0 20px rgba(255, 0, 255, 0.35);
+  --glow-green-strong: 0 0 40px rgba(0, 255, 136, 0.5), 0 0 80px rgba(0, 255, 136, 0.15);
+
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+
+  /* Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+
+  /* Fonts */
+  --font-sans: 'Inter', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+}
+
+/* ── Reset ─────────────────────────────────────────── */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--black-pure);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Animated Background ──────────────────────────── */
+
+.app-background {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 15% 50%, rgba(0, 255, 136, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 80%, rgba(0, 212, 255, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 20%, rgba(255, 0, 255, 0.03) 0%, transparent 50%),
+    var(--black-pure);
+}
+
+/* subtle scan-line overlay */
+.app-background::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 255, 136, 0.015) 2px,
+      rgba(0, 255, 136, 0.015) 4px);
+  pointer-events: none;
+}
+
+/* ── Glass utilities (used as extra classes in TSX) ── */
+
+.glass {
+  background: rgba(17, 17, 17, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--gray-border);
+}
+
+.glass-strong {
+  background: rgba(10, 10, 10, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--gray-border);
+}
+
+/* ── text-gradient utility ────────────────────────── */
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--neon-green), var(--neon-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Scrollbar ────────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--black-deep);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gray-mid);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--neon-green);
+  box-shadow: var(--glow-green);
+}
+
+/* ── Base element resets ──────────────────────────── */
+
+button {
+  font-family: var(--font-sans);
+  cursor: pointer;
+  outline: none;
+  border: none;
+  transition: all var(--transition-base);
+}
+
+input,
+textarea {
+  font-family: var(--font-sans);
+  outline: none;
+  border: none;
+}
