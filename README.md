@@ -2,17 +2,17 @@
 
 > **Premium AI-powered customer support with multi-agent architecture**
 
-## 🌟 Features
+##  Features
 
-- 🤖 **Multi-Agent AI System** - Router delegates to Support, Order, and Billing agents
-- ⚡ **Groq-Powered** - Ultra-fast AI responses with Llama 3.3 70B
-- 🎨 **Premium UI** - Glassmorphism, gradients, smooth animations
-- 📊 **Context-Aware** - Maintains conversation history for personalized responses
-- 🔧 **AI Tools** - Agents query real database for orders, invoices, refunds
-- 💬 **Streaming Responses** - Real-time AI output as it's generated
-- 🎯 **Type-Safe** - End-to-end TypeScript with Hono RPC ready
+-  **Multi-Agent AI System** - Router delegates to Support, Order, and Billing agents
+-  **Groq-Powered** - Ultra-fast AI responses with Llama 3.3 70B
+-  **Premium UI** - Glassmorphism, gradients, smooth animations
+-  **Context-Aware** - Maintains conversation history for personalized responses
+-  **AI Tools** - Agents query real database for orders, invoices, refunds
+-  **Streaming Responses** - Real-time AI output as it's generated
+-  **Type-Safe** - End-to-end TypeScript with Hono RPC ready
 
-## 🚀 Quick Start
+##  Quick Start
 
 **Full setup guide:** See [QUICKSTART.md](./QUICKSTART.md)
 
@@ -40,7 +40,7 @@ cd apps/frontend && npm run dev
 | AI | Groq (Llama 3.3 70B) |
 | Monorepo | Turborepo |
 
-## 🧪 Try It
+##  Try It
 
 Ask the AI:
 - "Where is my order ORD-2024-002?"
@@ -60,7 +60,7 @@ Watch the router classify your query and delegate to the right agent! Each agent
 │   └── shared-types/  # Shared TypeScript types
 ```
 
-## 🎨 UI Highlights
+##  UI Highlights
 
 - Dark mode with purple-blue gradients
 - Glassmorphism chat interface
@@ -72,4 +72,3 @@ Watch the router classify your query and delegate to the right agent! Each agent
 
 ---
 
-**Built with ❤️** | See [SETUP.md](./SETUP.md) for detailed docs | [walkthrough.md](./walkthrough.md) for architecture details
