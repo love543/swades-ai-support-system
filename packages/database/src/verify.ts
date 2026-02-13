@@ -1,6 +1,6 @@
 import 'dotenv/config';
-import { db } from './client';
-import { conversations, messages, orders, invoices, refunds } from './schema';
+import { db } from './client.js';
+import { conversations, messages, orders, invoices, refunds } from './schema.js';
 
 async function verifyData() {
     console.log('📊 Database Summary:\n');
