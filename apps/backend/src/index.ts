@@ -3,11 +3,11 @@ import { serve } from '@hono/node-server';
 import { Hono } from 'hono';
 import { cors } from 'hono/cors';
 import { logger } from 'hono/logger';
-import chatRoutes from './routes/chat.routes';
-import agentsRoutes from './routes/agents.routes';
-import healthRoutes from './routes/health.routes';
-import { errorHandler } from './middleware/errorHandler';
-import { rateLimiter } from './middleware/rateLimit';
+import chatRoutes from './routes/chat.routes.js';
+import agentsRoutes from './routes/agents.routes.js';
+import healthRoutes from './routes/health.routes.js';
+import { errorHandler } from './middleware/errorHandler.js';
+import { rateLimiter } from './middleware/rateLimit.js';
 
 const app = new Hono();
 

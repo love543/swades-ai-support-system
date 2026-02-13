@@ -2,8 +2,8 @@ import { Hono } from 'hono';
 import { zValidator } from '@hono/zod-validator';
 import { z } from 'zod';
 import { stream } from 'hono/streaming';
-import { ChatService } from '../services/chat.service';
-import { AppError } from '../middleware/errorHandler';
+import { ChatService } from '../services/chat.service.js';
+import { AppError } from '../middleware/errorHandler.js';
 
 const app = new Hono();
 const chatService = new ChatService();

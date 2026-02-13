@@ -1,9 +1,9 @@
 import { db, conversations, messages, type NewMessage } from '@swades/database';
 import { eq, desc } from 'drizzle-orm';
-import { routeQuery } from '../agents/router';
-import { getSupportAgentResponse } from '../agents/support-agent';
-import { getOrderAgentResponse } from '../agents/order-agent';
-import { getBillingAgentResponse } from '../agents/billing-agent';
+import { routeQuery } from '../agents/router.js';
+import { getSupportAgentResponse } from '../agents/support-agent.js';
+import { getOrderAgentResponse } from '../agents/order-agent.js';
+import { getBillingAgentResponse } from '../agents/billing-agent.js';
 import type { AgentType } from '@swades/shared-types';
 
 export class ChatService {
@@ -56,7 +56,7 @@ export class ChatService {
             .orderBy(desc(messages.createdAt))
             .limit(10);
 
-        contextMessages.reverse(); 
+        contextMessages.reverse();
 
         const [userMsg] = await db
             .insert(messages)
