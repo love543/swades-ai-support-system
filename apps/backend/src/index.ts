@@ -13,7 +13,10 @@ const app = new Hono();
 
 // Middleware
 app.use('*', logger());
-app.use('*', cors());
+app.use('*', cors({
+    origin: '*'
+}))
+
 app.use('/api/*', rateLimiter);
 
 // Routes
