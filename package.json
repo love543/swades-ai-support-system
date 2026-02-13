@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run build",
-    "build:prod": "npm run build -w @swades/database && npm run build -w @swades/backend",
+    "build:prod": "cd packages/database && npm run build && cd ../../apps/backend && npm run build",
     "test": "turbo run test",
     "lint": "turbo run lint",
     "db:generate": "cd packages/database && npm run generate",
